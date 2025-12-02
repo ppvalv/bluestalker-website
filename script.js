@@ -568,3 +568,90 @@ window.addEventListener('load', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
+
+// ============================================
+// IMAGE MODAL / LIGHTBOX
+// ============================================
+
+class ImageModal {
+    constructor() {
+        this.modal = document.getElementById('imageModal');
+        this.modalImage = document.getElementById('modalImage');
+        this.modalTitle = document.getElementById('modalTitle');
+        this.modalDescription = document.getElementById('modalDescription');
+        this.closeBtn = document.querySelector('.modal-close');
+        this.clickableImages = document.querySelectorAll('.clickable-screenshot');
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.modal) return;
+        
+        // Add click event to all clickable screenshots
+        this.clickableImages.forEach(img => {
+            img.addEventListener('click', (e) => {
+                this.openModal(e.target);
+            });
+        });
+        
+        // Close modal on close button click
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => {
+                this.closeModal();
+            });
+        }
+        
+        // Close modal when clicking outside the image
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.closeModal();
+            }
+        });
+        
+        // Close modal on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+    }
+    
+    openModal(image) {
+        const imageSrc = image.src;
+        const imageTitle = image.getAttribute('data-title');
+        const imageDescription = image.getAttribute('data-description');
+        
+        // Set modal content
+        this.modalImage.src = imageSrc;
+        this.modalTitle.textContent = imageTitle;
+        this.modalDescription.textContent = imageDescription;
+        
+        // Show modal with animation
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        
+        // Add fade-in animation
+        setTimeout(() => {
+            this.modal.style.opacity = '1';
+        }, 10);
+    }
+    
+    closeModal() {
+        // Fade out animation
+        this.modal.style.opacity = '0';
+        
+        setTimeout(() => {
+            this.modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }, 300);
+    }
+}
+
+// Initialize Image Modal when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing code ...
+    
+    // Initialize Image Modal
+    new ImageModal();
+});

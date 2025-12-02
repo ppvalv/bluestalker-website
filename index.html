@@ -240,7 +240,9 @@
             <div class="screenshots-grid">
                 <div class="screenshot-card">
                     <div class="screenshot-wrapper">
-                        <img src="./full_dashboard.png" alt="Dashboard Completo BlueStalker">
+                        <img src="./full_dashboard.png" alt="Dashboard Completo BlueStalker"
+                            class="clickable-screenshot" data-title="Dashboard Principal"
+                            data-description="Vista completa con mapa, estadísticas y dispositivos detectados">
                         <div class="screenshot-overlay">
                             <h4>Dashboard Principal</h4>
                             <p>Vista completa con mapa, estadísticas y dispositivos detectados</p>
@@ -250,7 +252,9 @@
 
                 <div class="screenshot-card">
                     <div class="screenshot-wrapper">
-                        <img src="./BLEDevicesSection.png" alt="Sección de Dispositivos BLE">
+                        <img src="./BLEDevicesSection.png" alt="Sección de Dispositivos BLE"
+                            class="clickable-screenshot" data-title="Análisis BLE"
+                            data-description="Dispositivos Bluetooth Low Energy con RSSI y distancia">
                         <div class="screenshot-overlay">
                             <h4>Análisis BLE</h4>
                             <p>Dispositivos Bluetooth Low Energy con RSSI y distancia</p>
@@ -260,7 +264,9 @@
 
                 <div class="screenshot-card">
                     <div class="screenshot-wrapper">
-                        <img src="./WifiDevicesSection.png" alt="Sección de Dispositivos WiFi">
+                        <img src="./WifiDevicesSection.png" alt="Sección de Dispositivos WiFi"
+                            class="clickable-screenshot" data-title="Monitoreo WiFi"
+                            data-description="Detección de probe requests y access points">
                         <div class="screenshot-overlay">
                             <h4>Monitoreo WiFi</h4>
                             <p>Detección de probe requests y access points</p>
@@ -757,6 +763,18 @@
             </linearGradient>
         </defs>
     </svg>
+
+    <!-- Image Modal/Lightbox -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption">
+                <h4 id="modalTitle"></h4>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

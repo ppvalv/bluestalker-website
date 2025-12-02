@@ -279,6 +279,4 @@ Para mejorar el sitio:
 
 ---
 
-**Desarrollado con 💙 para BlueStalker**
-
 *Sistema de Inteligencia Pasiva Bluetooth*
